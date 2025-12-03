@@ -1,0 +1,295 @@
+[1] Clean up old demo files (if any)
+[2] Create dummy file (64 KiB random data)
+[3] Save a copy of the original for later comparison
+[4] Create 10% redundancy with par2
+
+Block size: 36
+Source file count: 1
+Source block count: 1821
+Recovery block count: 182
+Recovery file count: 8
+
+Opening: dummy.bin
+Computing Reed Solomon matrix.
+Constructing: done.
+Wrote 6552 bytes to disk
+Writing recovery packets
+Writing verification packets
+Done
+
+== par2 verify: before corruption ==
+Loading "dummy_par2.par2".
+Loaded 4 new packets
+Loading "dummy_par2.vol000+01.par2".
+Loaded 1 new packets including 1 recovery blocks
+Loading "dummy_par2.vol063+64.par2".
+Loaded 64 new packets including 64 recovery blocks
+Loading "dummy_par2.vol031+32.par2".
+Loaded 32 new packets including 32 recovery blocks
+Loading "dummy_par2.vol015+16.par2".
+Loaded 16 new packets including 16 recovery blocks
+Loading "dummy_par2.vol127+55.par2".
+Loaded 55 new packets including 55 recovery blocks
+Loading "dummy_par2.vol007+08.par2".
+Loaded 8 new packets including 8 recovery blocks
+Loading "dummy_par2.vol001+02.par2".
+Loaded 2 new packets including 2 recovery blocks
+Loading "dummy_par2.vol003+04.par2".
+Loaded 4 new packets including 4 recovery blocks
+Loading "dummy_par2.par2".
+No new packets found
+
+There are 1 recoverable files and 0 other files.
+The block size used was 36 bytes.
+There are a total of 1821 data blocks.
+The total size of the data files is 65536 bytes.
+
+Verifying source files:
+
+Opening: "dummy.bin"
+Target: "dummy.bin" - found.
+
+All files are correct, repair is not required.
+
+[5] Flip a single bit in the file to simulate a tiny corruption
+Original byte at index 123: 0x15
+Corrupted byte at index 123: 0x14
+
+== par2 verify: after single-bit corruption ==
+Loading "dummy_par2.par2".
+Loaded 4 new packets
+Loading "dummy_par2.vol000+01.par2".
+Loaded 1 new packets including 1 recovery blocks
+Loading "dummy_par2.vol063+64.par2".
+Loaded 64 new packets including 64 recovery blocks
+Loading "dummy_par2.vol031+32.par2".
+Loaded 32 new packets including 32 recovery blocks
+Loading "dummy_par2.vol015+16.par2".
+Loaded 16 new packets including 16 recovery blocks
+Loading "dummy_par2.vol127+55.par2".
+Loaded 55 new packets including 55 recovery blocks
+Loading "dummy_par2.vol007+08.par2".
+Loaded 8 new packets including 8 recovery blocks
+Loading "dummy_par2.vol001+02.par2".
+Loaded 2 new packets including 2 recovery blocks
+Loading "dummy_par2.vol003+04.par2".
+Loaded 4 new packets including 4 recovery blocks
+Loading "dummy_par2.par2".
+No new packets found
+
+There are 1 recoverable files and 0 other files.
+The block size used was 36 bytes.
+There are a total of 1821 data blocks.
+The total size of the data files is 65536 bytes.
+
+Verifying source files:
+
+Opening: "dummy.bin"
+Target: "dummy.bin" - damaged. Found 1820 of 1821 data blocks.
+
+Scanning extra files:
+
+
+Repair is required.
+1 file(s) exist but are damaged.
+You have 1820 out of 1821 data blocks available.
+You have 182 recovery blocks available.
+Repair is possible.
+You have an excess of 181 recovery blocks.
+1 recovery blocks will be used to repair.
+[Expected] par2 reported damage for the single-bit corruption.
+
+[6] Repair the single-bit corruption with par2
+Loading "dummy_par2.par2".
+Loaded 4 new packets
+Loading "dummy_par2.vol000+01.par2".
+Loaded 1 new packets including 1 recovery blocks
+Loading "dummy_par2.vol063+64.par2".
+Loaded 64 new packets including 64 recovery blocks
+Loading "dummy_par2.vol031+32.par2".
+Loaded 32 new packets including 32 recovery blocks
+Loading "dummy_par2.vol015+16.par2".
+Loaded 16 new packets including 16 recovery blocks
+Loading "dummy_par2.vol127+55.par2".
+Loaded 55 new packets including 55 recovery blocks
+Loading "dummy_par2.vol007+08.par2".
+Loaded 8 new packets including 8 recovery blocks
+Loading "dummy_par2.vol001+02.par2".
+Loaded 2 new packets including 2 recovery blocks
+Loading "dummy_par2.vol003+04.par2".
+Loaded 4 new packets including 4 recovery blocks
+Loading "dummy_par2.par2".
+No new packets found
+
+There are 1 recoverable files and 0 other files.
+The block size used was 36 bytes.
+There are a total of 1821 data blocks.
+The total size of the data files is 65536 bytes.
+
+Verifying source files:
+
+Opening: "dummy.bin"
+Target: "dummy.bin" - damaged. Found 1820 of 1821 data blocks.
+
+Scanning extra files:
+
+
+Repair is required.
+1 file(s) exist but are damaged.
+You have 1820 out of 1821 data blocks available.
+You have 182 recovery blocks available.
+Repair is possible.
+You have an excess of 181 recovery blocks.
+1 recovery blocks will be used to repair.
+
+Computing Reed Solomon matrix.
+Constructing: done.
+Solving: done.
+
+Wrote 65536 bytes to disk
+
+Verifying repaired files:
+
+Opening: "dummy.bin"
+Target: "dummy.bin" - found.
+
+Repair complete.
+
+== par2 verify: after repair (single-bit) ==
+Loading "dummy_par2.par2".
+Loaded 4 new packets
+Loading "dummy_par2.vol000+01.par2".
+Loaded 1 new packets including 1 recovery blocks
+Loading "dummy_par2.vol063+64.par2".
+Loaded 64 new packets including 64 recovery blocks
+Loading "dummy_par2.vol031+32.par2".
+Loaded 32 new packets including 32 recovery blocks
+Loading "dummy_par2.vol015+16.par2".
+Loaded 16 new packets including 16 recovery blocks
+Loading "dummy_par2.vol127+55.par2".
+Loaded 55 new packets including 55 recovery blocks
+Loading "dummy_par2.vol007+08.par2".
+Loaded 8 new packets including 8 recovery blocks
+Loading "dummy_par2.vol001+02.par2".
+Loaded 2 new packets including 2 recovery blocks
+Loading "dummy_par2.vol003+04.par2".
+Loaded 4 new packets including 4 recovery blocks
+Loading "dummy_par2.par2".
+No new packets found
+
+There are 1 recoverable files and 0 other files.
+The block size used was 36 bytes.
+There are a total of 1821 data blocks.
+The total size of the data files is 65536 bytes.
+
+Verifying source files:
+
+Opening: "dummy.bin"
+Target: "dummy.bin" - found.
+
+All files are correct, repair is not required.
+
+[7] Compare repaired file with original copy
+[OK] Repaired file is byte-identical to the original.
+
+[8] Create heavy corruption that exceeds the 10% redundancy
+    (Overwriting about half of the file with zeros)
+
+== par2 verify: after heavy corruption ==
+Loading "dummy_par2.par2".
+Loaded 4 new packets
+Loading "dummy_par2.vol000+01.par2".
+Loaded 1 new packets including 1 recovery blocks
+Loading "dummy_par2.vol063+64.par2".
+Loaded 64 new packets including 64 recovery blocks
+Loading "dummy_par2.vol031+32.par2".
+Loaded 32 new packets including 32 recovery blocks
+Loading "dummy_par2.vol015+16.par2".
+Loaded 16 new packets including 16 recovery blocks
+Loading "dummy_par2.vol127+55.par2".
+Loaded 55 new packets including 55 recovery blocks
+Loading "dummy_par2.vol007+08.par2".
+Loaded 8 new packets including 8 recovery blocks
+Loading "dummy_par2.vol001+02.par2".
+Loaded 2 new packets including 2 recovery blocks
+Loading "dummy_par2.vol003+04.par2".
+Loaded 4 new packets including 4 recovery blocks
+Loading "dummy_par2.par2".
+No new packets found
+
+There are 1 recoverable files and 0 other files.
+The block size used was 36 bytes.
+There are a total of 1821 data blocks.
+The total size of the data files is 65536 bytes.
+
+Verifying source files:
+
+Opening: "dummy.bin"
+Target: "dummy.bin" - damaged. Found 910 of 1821 data blocks.
+
+Scanning extra files:
+
+
+Repair is required.
+1 file(s) exist but are damaged.
+You have 910 out of 1821 data blocks available.
+You have 182 recovery blocks available.
+Repair is not possible.
+You need 729 more recovery blocks to be able to repair.
+[Expected] par2 reported heavy damage.
+
+[9] Try to repair heavily corrupted file (this should NOT be possible)
+Loading "dummy_par2.par2".
+Loaded 4 new packets
+Loading "dummy_par2.vol000+01.par2".
+Loaded 1 new packets including 1 recovery blocks
+Loading "dummy_par2.vol063+64.par2".
+Loaded 64 new packets including 64 recovery blocks
+Loading "dummy_par2.vol031+32.par2".
+Loaded 32 new packets including 32 recovery blocks
+Loading "dummy_par2.vol015+16.par2".
+Loaded 16 new packets including 16 recovery blocks
+Loading "dummy_par2.vol127+55.par2".
+Loaded 55 new packets including 55 recovery blocks
+Loading "dummy_par2.vol007+08.par2".
+Loaded 8 new packets including 8 recovery blocks
+Loading "dummy_par2.vol001+02.par2".
+Loaded 2 new packets including 2 recovery blocks
+Loading "dummy_par2.vol003+04.par2".
+Loaded 4 new packets including 4 recovery blocks
+Loading "dummy_par2.par2".
+No new packets found
+
+There are 1 recoverable files and 0 other files.
+The block size used was 36 bytes.
+There are a total of 1821 data blocks.
+The total size of the data files is 65536 bytes.
+
+Verifying source files:
+
+Opening: "dummy.bin"
+Target: "dummy.bin" - damaged. Found 910 of 1821 data blocks.
+
+Scanning extra files:
+
+
+Repair is required.
+1 file(s) exist but are damaged.
+You have 910 out of 1821 data blocks available.
+You have 182 recovery blocks available.
+Repair is not possible.
+You need 729 more recovery blocks to be able to repair.
+[Expected] par2 repair reported that repair is not possible due to too much damage.
+
+Done. Demo files in the current directory:
+dummy.bin
+dummy.bin.original
+dummy_par2.par2
+dummy_par2.vol000+01.par2
+dummy_par2.vol001+02.par2
+dummy_par2.vol003+04.par2
+dummy_par2.vol007+08.par2
+dummy_par2.vol015+16.par2
+dummy_par2.vol031+32.par2
+dummy_par2.vol063+64.par2
+dummy_par2.vol127+55.par2
